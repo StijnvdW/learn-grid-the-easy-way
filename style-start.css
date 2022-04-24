@@ -146,6 +146,12 @@ h3 {
 .testimonial-grid {
   display: grid;
   gap: 1.5rem;
+  grid-template-areas: 
+    'one'
+    'two'
+    'three'
+    'four'
+    'five';
 
   padding-block: 2rem;
   width: min(95%, 70rem);
@@ -159,28 +165,43 @@ h3 {
   box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
 }
 
-@media (min-width: 50em) {
+.testimonial:nth-child(1) {
+  grid-area: one;
+}
 
-  .grid-col-span-2 {
-    grid-column: span 2;
-  }
-  /* 
-  implicit rows, you don't need to declare rows if not needed 
-  "don't create rows unless you need to create rows"
-  */
+.testimonial:nth-child(2) {
+  grid-area: two;
+}
+
+.testimonial:nth-child(3) {
+  grid-area: three;
+}
+
+.testimonial:nth-child(4) {
+  grid-area: four;
+}
+
+.testimonial:nth-child(5) {
+  grid-area: five;
+}
+
+@media (min-width: 30em) {
   .testimonial-grid {
-    grid-template-columns: 
-    repeat(4, 1fr);
-  }
-  
-  .testimonial:last-child {
-    /* don't use line numbers unless needed */
-    grid-column-start: 4;
-    grid-row: 1 / span 2;
+    grid-template-areas: 
+    'one one'
+    'two five'
+    'three five'
+    'four four';
   }
 }
 
-
+@media (min-width: 50em) {
+  .testimonial-grid {
+    grid-template-areas: 
+    'one one two five'
+    'three four four five';
+  }
+}
 
 .testimonial.quote {
   background-image: url("./images/bg-pattern-quotation.svg");
